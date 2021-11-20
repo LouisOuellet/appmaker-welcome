@@ -1,7 +1,7 @@
 API.Plugins.welcome = {
 	init:function(){
 		var checkInit = setInterval(function() {
-			if((API.initiated){
+			if(API.initiated){
 				clearInterval(checkInit);
 				if(!API.Contents.Auth.User.isWelcomed){
 					API.Builder.modal($('body'), {
