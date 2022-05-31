@@ -1,10 +1,10 @@
-API.Plugins.welcome = {
+Engine.Plugins.welcome = {
 	init:function(){
 		var checkInit = setInterval(function() {
-			if(API.initiated){
+			if(Engine.initiated){
 				clearInterval(checkInit);
-				if(!API.Contents.Auth.User.isWelcomed){
-					API.Builder.modal($('body'), {
+				if(!Engine.Contents.Auth.User.isWelcomed){
+					Engine.Builder.modal($('body'), {
 						title:'Welcome',
 						icon:'welcome',
 						zindex:'top',
@@ -23,13 +23,13 @@ API.Plugins.welcome = {
 							html += '<div class="row">';
 		            html += '<div class="col-12">';
 									html += '<div class="jumbotron m-0 switch-spacer text-center">';
-									  html += '<h1 class="display-4">'+API.Contents.Language['welcome_title']+'</h1>';
-									  html += '<p class="lead">'+API.Contents.Language['welcome_message']+'</p>';
+									  html += '<h1 class="display-4">'+Engine.Contents.Language['welcome_title']+'</h1>';
+									  html += '<p class="lead">'+Engine.Contents.Language['welcome_message']+'</p>';
 									html += '</div>';
 								html += '</div>';
 							html += '</div>';
 							html += '<div class="row mx-3 mr-50">';
-								if((JSON.stringify(API.Contents.Auth.Groups)==JSON.stringify(API.Contents.Auth.Roles))&&(JSON.stringify(API.Contents.Auth.Groups)==JSON.stringify(['Users']))){
+								if((JSON.stringify(Engine.Contents.Auth.Groups)==JSON.stringify(Engine.Contents.Auth.Roles))&&(JSON.stringify(Engine.Contents.Auth.Groups)==JSON.stringify(['Users']))){
 									html += '<div class="col-2 my-1 p-0 text-center pt-2">';
 										html += '<i class="fas fa-user-lock fa-2x"></i>';
 									html += '</div>';
@@ -52,7 +52,7 @@ API.Plugins.welcome = {
 									html += '<h4>Dark Mode</h4>';
 		              html += '<p class="text-justify">Dark mode is great whenever you are working in a low light environment. Visit the <a href="?p=profile">profile page</a> and activate "Dark mode".</p>';
 		            html += '</div>';
-								if(API.Auth.validate('custom', 'organizations_calls', 1)){
+								if(Engine.Auth.validate('custom', 'organizations_calls', 1)){
 									html += '<div class="col-2 my-1 p-0 text-center pt-2">';
 										html += '<i class="fas fa-phone fa-2x"></i>';
 									html += '</div>';
@@ -75,8 +75,8 @@ API.Plugins.welcome = {
 							action.preventDefault();
 							var text = action.currentTarget.textContent
 							if(action.currentTarget.attributes.href.value == '?p=profile'){ text = 'Profile'; }
-							API.GUI.Breadcrumbs.add(text, action.currentTarget.attributes.href.value);
-							API.GUI.load($('#ContentFrame'),action.currentTarget.attributes.href.value);
+							Engine.GUI.Breadcrumbs.add(text, action.currentTarget.attributes.href.value);
+							Engine.GUI.load($('#ContentFrame'),action.currentTarget.attributes.href.value);
 							modal.modal('hide');
 						});
 						modal.modal('show');
@@ -87,4 +87,4 @@ API.Plugins.welcome = {
 	}
 }
 
-API.Plugins.welcome.init();
+Engine.Plugins.welcome.init();
